@@ -5,7 +5,7 @@ The following is the configurations used to configure the cisco switch to work w
 
 VLAN 10 is used as the internal VLAN, and interface G1/0/7 is reserved for MUD Client.
 
-The radius server is assumed to be at 192.168.1.10 (line 25)
+The radius server is assumed to be at 192.168.1.10.
 
 ```
 
