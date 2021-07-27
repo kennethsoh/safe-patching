@@ -1,0 +1,11 @@
+[Unit]
+Description=Automated Mud_Manager and FreeRadius
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/MUD-Manager
+ExecStart=/usr/bin/python3 /MUD-Manager/servicemanager.py
+
+[Install]
+WantedBy=multi-user.target
