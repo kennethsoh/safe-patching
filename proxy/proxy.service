@@ -1,0 +1,12 @@
+[Unit]
+Description=Proxy with FileSystem Monitoring
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/proxy 
+ExecStart=/usr/bin/python3 /proxy/fsm.py
+
+[Install]
+WantedBy=multi-user.target
+Alias=proxy
