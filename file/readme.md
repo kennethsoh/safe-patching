@@ -9,8 +9,6 @@ apt install -y nginx
 
 cp /safe-patching/file/default /etc/nginx/sites-enabled/default
 
-rm -rf /var/www/html
-cp -r /safe/patching/file/html /var/www/ 
 ```
 
 2. Set up Local DNS using Bind
