@@ -15,9 +15,7 @@ cp /safe-patching/file/default /etc/nginx/sites-enabled/default
 ```
 apt install -y bind9 bind9utils resolvconf 
 
-cp /safe-patching/file/named.conf.local /etc/bind/named.conf.local
-cp /safe-patching/file/forward.com /etc/bind/forward.com
-cp /safe-patching/file/reverse.com /etc/bind/reverse.com
+# Create Forward and Reverse Zones for www (web), proxy, mud-manager
 
 systemctl restart bind9
 ```
