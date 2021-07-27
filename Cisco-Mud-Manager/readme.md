@@ -63,3 +63,13 @@ make install
 cd /MUD-Manager/examples/AAA-LLDP-DHCP
 ./FR-setup.sh
 ```
+
+#### Execution
+```
+cp /safe-patching/Cisco-Mud-Manager/servicemanager.py /MUD-Manager
+cp /safe-patching/Cisco-Mud-Manager/mud.service /etc/systemd/system/mud.service
+
+systemctl daemon-reload
+systemctl enable mud.service
+systemctl restart mud.service
+```
