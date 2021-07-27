@@ -64,6 +64,20 @@ cd /MUD-Manager/examples/AAA-LLDP-DHCP
 ./FR-setup.sh
 ```
 
+7. Adding NAS. Open Freeradiusd clients.conf file (/usr/local/etc/raddb/clients.conf), and add the following to the end of the file. The value of the ipaddr is your NAS
+```
+client 192.168.1.1 {
+  ipaddr	= 192.168.1.1
+  secret	= cisco
+}
+```
+
+8. Enable and start MongoD service
+```
+systemctl enable mongod
+systemctl restart mongod
+```
+
 #### Execution
 ```
 cp /safe-patching/Cisco-Mud-Manager/servicemanager.py /MUD-Manager
