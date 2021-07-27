@@ -21,3 +21,9 @@ systemctl restart bind9
 ```
 
 3. Create CA Key & Certificate, Web Key & Certificate, and MUD Signing Key & Certificate.
+
+
+#### Usage
+test.json, test.p7s and test.html serve as the valid MUD file, MUD signature and sample patch file.
+
+testmal.json, testmal.p7s and testmal.exe serve as malicious MUD file, signature and patch.
