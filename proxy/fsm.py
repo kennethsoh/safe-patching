@@ -7,6 +7,7 @@ Date created    : 30 June 2021
 import os
 import sys
 import time
+from os import path
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
@@ -24,6 +25,14 @@ class Monitor(FileSystemEventHandler):
             pass
 
 if __name__ == "__main__":
+    if path.exists("files"):
+        pass
+    else:
+        try:
+            os.system("mkdir files")
+        except:
+            None
+            
     src_path = sys.argv[1] if len(sys.argv) > 1 else 'files/'
     
     event_handler=Monitor()
