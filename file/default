@@ -1,0 +1,32 @@
+# Default NGINX server configuration
+#
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+}
+        # SSL configuration
+server {
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+            
+        ssl_certificate /web.crt;       # Insert webssl certificate here
+        ssl_certificate_key /web.key;   # Insert webssl key here
+
+        root /var/www/html;
+
+        server_name www.tpamc.com;
+
+        location / { 
+                index index.html;
+                try_files $uri $uri/ =404;
+        }
+        location /files {
+                autoindex on; 
+        }   
+        location ~ \.php$ {
+
+                fastcgi_index   index.php;
+                fastcgi_pass    unix:/run/php/php7.4-fpm.sock;
+                include         fastcgi.conf;
+        }
+}
