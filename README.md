@@ -16,5 +16,5 @@ This implementation consists of:
 
 
 #### Improvements beyond RFC 8520 MUD
-- Proxy Server using VirusTotal API
+- Proxy Server using VirusTotal API <br>
 Checks Update Patch Files for Suspicious/Malicious code, and only saves if secure.
