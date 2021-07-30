@@ -37,7 +37,7 @@ apt-get install -y mongodb-org
 apt-get install -y libmongoc-1.0-0
 ```
 
-5. Installing Cisco MUD-Manager
+5a. Installing Cisco MUD-Manager
 ```
 apt-get install -y libcurl4-openssl-dev libmongoc-dev automake libtool libtool-bin
 cd /
@@ -45,6 +45,10 @@ git clone --branch 3.0.1 https://github.com/CiscoDevNet/MUD-Manager
 cd MUD-Manager
 autoreconf -f -i
 ./configure
+```
+5b. Replace mud_manager.c from /MUD-Manager/src with the one in this repository, then make and make install.
+```
+cp safe-patching/Cisco-Mud-Manager/mud_manager.c /MUD-Manager/src/mud_manager.c
 
 make
 make install
@@ -80,10 +84,21 @@ systemctl restart mongod
 
 #### Execution
 ```
+# Create downloads folder to save JSON MUD Files
+mkdir /MUD-Manager/downloads
+
+# File Sender Service to send JSON MUD Files to Proxy Server
+cp /safe-patching/Cisco-Mud-Manager/filesender.py /MUD-Manager/downloads
+cp /safe-patching/Cisco-Mud-Manager/sender.service /etc/systemd/system/sender.service
+
+# Automated Startup Service for MUD-Manager & FreeRADIUS
 cp /safe-patching/Cisco-Mud-Manager/servicemanager.py /MUD-Manager
 cp /safe-patching/Cisco-Mud-Manager/mud.service /etc/systemd/system/mud.service
 
 systemctl daemon-reload
+systemctl enable sender.service
+systemctl restart sender.service
+
 systemctl enable mud.service
 systemctl restart mud.service
 ```
