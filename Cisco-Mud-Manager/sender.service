@@ -1,0 +1,11 @@
+[Unit]
+Description=Send Json files to proxy server
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/MUD-Manager/downloads
+ExecStart=/usr/bin/python3 /MUD-Manager/downloads/filesender.py
+
+[Install]
+WantedBy=multi-user.target
